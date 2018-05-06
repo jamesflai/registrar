@@ -158,9 +158,12 @@ def get_records():
 	username=input('Enter student username:\n')
 	s=students[username]
 	print(s.last_name+', '+s.first_name)
-	print('GPA: '+s.gpa())
-	print('Credits earned: '+s.credits())
-	print('Courses taken:')
+	if s.credits()==0:
+		print('Student has no credits')
+	else:
+		print('GPA: '+str(s.gpa()))
+		print('Credits earned: '+str(s.credits()))
+		print('Courses taken:')
 	for course in s.list_courses():
 		print(course.course.number+'-'+course.section_number+': '+course.quarter+' '+course.year)
 		print(course.stuDict[s])

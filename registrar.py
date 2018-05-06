@@ -107,7 +107,7 @@ class Person:
 		self.date_of_birth=date_of_birth
 		self.username=username
 		self.affiliation=affiliation
-		self.email=str(self.username)+'@'+str(self.school)+'.edu'
+		self.email=str(self.username)+'@'+str(self.school.name)+'.edu'
 		self.courseList=[] #list of course offerings
 
 class Instructor(Person):
@@ -141,13 +141,13 @@ class Student(Person):
 	def credits(self):
 		creditsum=0
 		for course in self.courseList:
-			creditsum+=course.course.credits
+			creditsum+=int(course.course.credits)
 		return creditsum
 
 	def gpa(self):
 		gpasum=0
 		for course in self.courseList:
-			gpasum+=self.convert_grade(course.stuDict[self])*course.course.credits
+			gpasum+=self.convert_grade(course.stuDict[self])*int(course.course.credits)
 		return gpasum/self.credits()
 
 	def convert_grade(self, grade):
